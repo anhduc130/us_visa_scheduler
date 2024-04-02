@@ -237,6 +237,7 @@ else:
 
 
 if __name__ == "__main__":
+    exception_count = 0
     first_loop = True
     while 1:
         LOG_FILE_NAME = "log_" + str(datetime.now().date()) + ".txt"
@@ -291,13 +292,20 @@ if __name__ == "__main__":
                     print(msg)
                     info_logger(LOG_FILE_NAME, msg)
                     time.sleep(RETRY_WAIT_TIME)
+            exception_count = 0
         except Exception as error:
             # Exception Occured
-            msg = f"Break the loop after exception!\n"
-            END_MSG_TITLE = "EXCEPTION"
             print("An exception occurred:", error)
             print(traceback.format_exc())
-            break
+
+            exception_count += 1
+            if exception_count == 3:
+                msg = f"Break the loop after {exception_count} continuous exceptions!\n"
+                END_MSG_TITLE = "EXCEPTION"
+                break
+            else:
+                send_notification("EXCEPTION", f"An exception occured for {exception_count} times")
+                time.sleep(RETRY_TIME_L_BOUND)
 
 print(msg)
 info_logger(LOG_FILE_NAME, msg)
