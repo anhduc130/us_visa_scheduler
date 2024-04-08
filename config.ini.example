@@ -31,10 +31,10 @@ PERSONAL_PUSHER_URL = https://yoursite.com/api/esender.php
 
 [TIME]
 ; Time between retries/checks for available dates (seconds)
-RETRY_TIME_L_BOUND = 10
-RETRY_TIME_U_BOUND = 30
+RETRY_TIME_L_BOUND = 1
+RETRY_TIME_U_BOUND = 2
 ; Cooling down after WORK_LIMIT_TIME hours of work (Avoiding Ban)(hours)
-WORK_LIMIT_TIME = 2.0
-WORK_COOLDOWN_TIME = 0.5
+WORK_LIMIT_TIME = 24.0
+WORK_COOLDOWN_TIME = 1.0
 ; Temporary Banned (empty list): wait COOLDOWN_TIME (hours)
-BAN_COOLDOWN_TIME = 3
+BAN_COOLDOWN_TIME = 1
