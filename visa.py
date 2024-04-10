@@ -300,11 +300,11 @@ if __name__ == "__main__":
 
             exception_count += 1
             if exception_count >= 3:
-                send_notification("EXCEPTION", f"An exception occured for {exception_count} times. Sleep for {WORK_COOLDOWN_TIME} hours")
-                time.sleep(WORK_COOLDOWN_TIME * hour)
+                send_notification("EXCEPTION", f"An exception occured for {exception_count} times. Sleep for {BAN_COOLDOWN_TIME} hours")
+                time.sleep(BAN_COOLDOWN_TIME * hour)
                 exception_count = 0
             else:
-                send_notification("EXCEPTION", f"An exception occured for {exception_count} times")
+                # send_notification("EXCEPTION", f"An exception occured for {exception_count} times")
                 time.sleep(RETRY_TIME_U_BOUND)
 
 print(msg)
