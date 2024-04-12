@@ -301,8 +301,10 @@ if __name__ == "__main__":
             exception_count += 1
             if exception_count >= 3:
                 send_notification("EXCEPTION", f"An exception occured for {exception_count} times. Sleep for {BAN_COOLDOWN_TIME} hours")
+                driver.get(SIGN_OUT_LINK)
                 time.sleep(BAN_COOLDOWN_TIME * hour)
                 exception_count = 0
+                first_loop = True
             else:
                 # send_notification("EXCEPTION", f"An exception occured for {exception_count} times")
                 time.sleep(RETRY_TIME_U_BOUND)
