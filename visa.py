@@ -84,6 +84,7 @@ JS_SCRIPT = ("var req = new XMLHttpRequest();"
              "return req.responseText;")
 
 def send_notification(title, msg):
+    return
     print(f"Sending notification!")
     if SENDGRID_API_KEY:
         message = Mail(from_email=USERNAME, to_emails=USERNAME, subject=msg, html_content=msg)
@@ -231,7 +232,7 @@ def info_logger(file_path, log):
 
 
 if LOCAL_USE:
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    driver = webdriver.Chrome()
 else:
     driver = webdriver.Remote(command_executor=HUB_ADDRESS, options=webdriver.ChromeOptions())
 
@@ -240,7 +241,7 @@ if __name__ == "__main__":
     exception_count = 0
     first_loop = True
     while 1:
-        LOG_FILE_NAME = "log_" + str(datetime.now().date()) + ".txt"
+        LOG_FILE_NAME = ".\logs\log_" + str(datetime.now().date()) + ".txt"
         if first_loop:
             t0 = time.time()
             total_time = 0
